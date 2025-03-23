@@ -90,6 +90,15 @@ def get_local_ip():
     return None
 
 
+def can_scan_cmcc_edu():
+    try:
+        result = subprocess.check_output("netsh wlan show networks", encoding="gbk", errors="ignore")
+        return "CMCC-EDU" in result
+    except Exception as e:
+        print(f"获取可用Wi-Fi列表失败：{e}")
+        return False
+
+
 def ensure_wifi_connected(target_ssid="CMCC-EDU"):
     # 检测是否有 CMCC-EDU 的 WiFi
     if not can_scan_cmcc_edu():
@@ -136,15 +145,6 @@ chrome_options.add_argument("--window-size=1920,1080")
 
 # 全局变量driver
 driver = None
-
-
-def can_scan_cmcc_edu():
-    try:
-        result = subprocess.check_output("netsh wlan show networks", encoding="gbk", errors="ignore")
-        return "CMCC-EDU" in result
-    except Exception as e:
-        print(f"获取可用Wi-Fi列表失败：{e}")
-        return False
 
 
 def get_redirect_url():
