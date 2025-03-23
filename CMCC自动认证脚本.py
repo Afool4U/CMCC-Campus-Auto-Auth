@@ -1,4 +1,4 @@
-# Author: Afool4u
+# Author: Afool4U
 # Date: 2025-03-23
 # Description: 中国移动校园卡自动认证脚本
 # Version: 1.0
